@@ -1,0 +1,10 @@
+<!-- Meteor scans for every html files, can be placed in any subfolder -->
+
+<template name="addPlayerForm">
+  {{#if currentUser}}
+  <form>
+    <input type="text" name="playerName">
+    <input type="submit" value="Add Player">
+  </form>
+  {{/if}}
+</template>

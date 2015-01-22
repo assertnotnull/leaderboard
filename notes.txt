@@ -1,0 +1,28 @@
+----- Folder convention:
+
+Inside the leaderboard.js file, a lot of our code is inside the isClient conditional. If we spread this code across multiple files though, it’d be inelegant to reuse the conditional over and over again.
+
+To avoid such a fate, Meteor has a convention where any code that’s placed within a folder named “client” will only run on the client.
+
+As a demonstration:
+
+    Create a folder named “client” inside your project’s folder.
+    Create a JavaScript file inside this new folder. You can name it whatever you like.
+    Cut and paste all of the client-side code from the leaderboard.js into the new file, but without the isClient conditional.
+
+After saving the file, the application continues to work as expected.
+
+Because of this convention, it’s best to place templates, events, helper functions, and the Meteor.subscribe statement inside a “client” directory within your project’s directory.
+
+On the other end of the spectrum, there’s the convention where any code placed within a folder named “server” will only run on the server. This is where we’d place our methods, and the Meteor.publish statement.
+
+After shuffling the code around inside our Leaderboard application, the only code left in the original leaderboard.js file will be the statement that creates the “PlayersList” collection. We’ll leave this code outside of the “client” and “server” folders since we need the code to execute in both environments for it to function correctly. You could, however, move the code to a file named “collections.js” (or something similar). This would only be for the sake of navigating your project though. That name has no inherent meaning.
+
+
+----- Other Special Folders
+
+When you’re just getting started with Meteor, most of your files will probably end up in the client and server folders. There are, however, some other folder names that can be used for different purposes:
+
+    Files stored in a private folder will only be accessible to code that’s executed on the server. The files will never be accessible by users.
+    Files stored in a public folder are served to visitors. These are files like images, favicons, and the robots.txt file.
+    Files stored in a lib folder are loaded before all other files.
